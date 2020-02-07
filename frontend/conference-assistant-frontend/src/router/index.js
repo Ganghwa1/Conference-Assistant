@@ -12,17 +12,11 @@ export default new Router({
   mode : 'history',
   routes: [
     {
-<<<<<<< HEAD
       path: '/',
       name: 'Signin',
       component: Signin
     },
     {
-<<<<<<< HEAD:conference-assistant/src/router/index.js
-=======
->>>>>>> frontend
-=======
->>>>>>> frontend:frontend/conference-assistant-frontend/src/router/index.js
       path:'/teamlist',
       name:'TeamListPage',
       components:{
@@ -31,17 +25,11 @@ export default new Router({
       }
     },
     {
-<<<<<<< HEAD:conference-assistant/src/router/index.js
-<<<<<<< HEAD
-=======
       path: '/',
       name: 'Signin',
       component: Signin
     },
     {
->>>>>>> frontend
-=======
->>>>>>> frontend:frontend/conference-assistant-frontend/src/router/index.js
       path:'/signup',
       name: 'Signup',
       component: Signup
