@@ -1,6 +1,6 @@
 <template>
   <transition name="modal-fade">
-    <div class="find-password-modal">
+    <div class="add-team-modal">
       <div class="modal"
         role="dialog"
         aria-labelledby="modalTitle"
@@ -10,10 +10,9 @@
           class="modal-header"
           id="modalTitle"
           >
-          <slot name="header" class="representative-phrase-p">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;
-            비밀번호가 생각나지 않으세요?
+          <slot name="header">
+            참여중인 팀
+            <span class="phrase">이 있습니까?</span>
             <button
               type="button"
               class="btn-close"
@@ -27,32 +26,36 @@
           id="modalDescription"
         >
           <slot name="body">
-            <p >비밀번호를 전송받을 이메일을 입력하세요.</p>
-            <input type="email" placeholder="  이메일을 입력해주세요."/>
+            <input type="text" placeholder="   팀 URL을 입력해주세요."/>
           </slot>
         </section>
 
         <footer class="modal-footer">
           <slot name="footer">
-            <button type="button" class="btn-green" @click="close" aria-label="Close modal">확인</button>
-            <button type="button" class="btn-gray" @click="close" aria-label="Close modal">취소</button>
+            <button type="button" class="btn-green" @click="create" aria-label="Close modal">팀 생성하기</button>
+            <button type="button" class="btn-gray" @click="close" aria-label="Close modal">OK</button>
           </slot>
         </footer>
       </div>
     </div>
   </transition>
 </template>
+
 <script>
   export default {
-    name: 'modal',
+    name: 'AddTeamModal',
     methods: {
       close() {
         this.$emit('close');
       },
+      create(){
+        //  팀 생성하기 모달 창 연결
+        this.$emit('create');
+      }
     },
   };
 </script>
-<style>
+<style scoped>
 .modal-fade-enter,
   .modal-fade-leave-active {
     opacity: 0;
@@ -62,24 +65,23 @@
   .modal-fade-leave-active {
     transition: opacity .3s ease
   }
-  .find-password-modal {
+  .add-team-modal {
     position: fixed;
-    margin-top:-80px;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(143, 143, 143, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .modal {
-    height:30%;
-    width:60%;
+    height:40%;
+    width:40%;
     margin:15%;
-    border-radius: 0.8rem;
+    border-radius: 0.5rem;
     background: rgb(235, 235, 235);
     box-shadow: 2px 2px 20px 1px;
     overflow-x: auto;
@@ -95,11 +97,17 @@
 
   .modal-header {
     border-bottom: 1px solid #eeeeee;
-    color: rgb(63, 63, 63);
-    font-size: 18px;
-    font-weight: bold;
+    color:#32a852;
+    font-size: 23px;
+    text-align:center;
+    font-weight: 800;
     margin-left: 25%;
     justify-content: space-between;
+  }
+
+  .phrase{
+      margin-left: -95px;
+      color:rgb(77, 77, 77);
   }
 
   .modal-footer {
@@ -111,7 +119,6 @@
     position: relative;
     padding: 20px 10px;
   }
-
   p{
     margin-left: -5%;
     text-align: center;
@@ -120,46 +127,45 @@
   .btn-close {
     border: none;
     font-size: 100%;
-    padding: 20px;
+    padding: 40px;
     cursor: pointer;
     font-weight: bold;
     color: #4AAE9B;
     background: transparent;
   }
 
-.modal-body input[type="email"]{
-  margin-top: 5%;
+.modal-body input[type="text"]{
+  margin-top: -5%;
   margin-left: 2%;
-  height: 30px;
-  border-radius: 0.5rem;
+  height: 70px;
+  border-radius: 0.3rem;
   width: 95%
 }
 
 button.btn-gray {
-    margin-top: -20px;
-    margin-left: 17%;
-    height:39%;
-    width:18%;
+    margin-top: 7px;
+    /* margin-left: 100px; */
+    margin-right: 20px;
+    height:50px;
+    width:50%;
     background: rgb(173, 173, 173);
     font-size: 18px;
     color: #f3f2f2;
     font-weight: bold;
     border: 1px solid rgb(173, 172, 172);
-    border-radius: 0.7rem;
+    border-radius: 0.3rem;
   }
   button.btn-green {
-    margin-top: -20px;
-    margin-right: -175px;
-    height:39%;
-    width:18%;
+    margin-top: 7px;
+    margin-right: 10px;
+    height:50px;
+    width:50%;
     background: #32a852;
     font-size: 18px;
     color: #f3f2f2;
     font-weight: bold;
     border: 1px solid #32a852;
-    border-radius: 0.7rem;
+    border-radius: 0.3rem;
   }
-  ::placeholder{
-    font-size:14px;
-  }
+</style>
 </style>

@@ -12,7 +12,7 @@
                <button type="button" class="btn" @click="showModal">비밀번호가 생각나지 않으세요?</button>
                <FindpasswordModal v-show="isModalVisible" @close="closeModal"/>
 
-               <router-link :to="{name:'Signup'}">Join</router-link>
+               <router-link :to="{name:'Signup'}" class="join-btn">Join</router-link>
            </fieldset>
        </form>
     </div>
@@ -21,7 +21,7 @@
 import FindpasswordModal from '../components/FindpasswordModal'
 
 export default {
-    name: 'SigninForm',
+name: 'SigninForm',
     components:{
         FindpasswordModal
     },
@@ -47,5 +47,11 @@ export default {
 }
 </script>
 <style scoped>
+.join-btn{
+    width:210px;
+    height:22px;
+    font-weight: 700;
+    font-size: 20px;
+}
 
 </style>

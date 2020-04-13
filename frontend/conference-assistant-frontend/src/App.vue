@@ -6,10 +6,13 @@
 
 <script>
 import AppHeader from './components/AppHeader'
+import SidebarMenu from './components/SidebarMenu'
+
 export default {
   name: 'App',
   components:{
-    AppHeader
+    AppHeader,
+    SidebarMenu
   }
 }
 </script>
