@@ -1,8 +1,9 @@
 <template>
     <div class="aimediation-form">
-        <img src="../img/ai.png"><h4>회의 중재</h4>
+        <img src="../img/ai.png">
+        <h4>회의 중재&nbsp;&nbsp;&nbsp;<toggle-button @change="onChangeEventHandler" :value="true" :labels="{checked: 'ON', unchecked:'OFF'}"></toggle-button></h4>
         <textarea class="textarea" disabled v-auto-scroll-bottom></textarea>
-        <div class="welcome-div">
+        <div v-if="onChanged" class="welcome-div">
                 <p> 안녕하세요!<br>저는 user1님의 실시간 감정 중재를
                     <br>도와드리는 로봇이에요.
                 </p>
@@ -11,7 +12,17 @@
 </template>
 <script>
 export default {
-    name : 'AIMediationForm'
+    name : 'AIMediationForm',
+    data(){
+        return{
+            onChanged : true
+        }
+    },
+    methods : {
+        onChangeEventHandler(){
+            this.onChanged = !this.onChanged;
+        }
+    }
 }
 </script>
 <style scoped>
@@ -67,5 +78,8 @@ img{
     height: 25%;
     border-radius: 0.2rem;
     box-shadow: 4px 4px 2px rgb(204, 204, 204);
+}
+.toggle-btn{
+   width:50px;
 }
 </style>

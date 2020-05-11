@@ -3,8 +3,9 @@
         <SidebarMenu/>
         <ChatroomForm/>
         <SelectedChatForm/>
-        <AIMediationForm/>
-        <AIKeywordListForm/>
+        <AIManagerForm/>
+        <AIKeywordListForm server="http://127.0.0.1:5000/corekeyword"></AIKeywordListForm>
+
     </div>
 </template>
 <script>
@@ -12,7 +13,7 @@ import SidebarMenu from '../components/SidebarMenu'
 import ChatroomForm from '../components/ChatroomForm'
 import SelectedChatForm from '../components/SelectedChatForm'
 import AIKeywordListForm from '../components/AIKeywordListForm'
-import AIMediationForm from '../components/AIMediationForm'
+import AIManagerForm from '../components/AIManagerForm'
 
 export default {
     name:'MainPage',
@@ -21,7 +22,7 @@ export default {
         ChatroomForm,
         SelectedChatForm,
         AIKeywordListForm,
-        AIMediationForm,
+        AIManagerForm,
     }
 }
 </script>
