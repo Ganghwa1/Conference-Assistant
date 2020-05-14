@@ -44,7 +44,7 @@ function createSchema(app,config){
 
         // database 객체에 속성으로 추가
         database[curItem.schemaName] = curSchema;
-        database[curItem.modelName] = curModel;
+    database[curItem.modelName] = curModel;
         console.log('schema: %s, model: %s이 database 객체 속성으로 추가됨',curItem.schemaName, curItem.modelName);
     }
 

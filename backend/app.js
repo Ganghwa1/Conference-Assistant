@@ -35,7 +35,7 @@ var config = require('./config');
 var chat = require('./routes/chat');
 
 var ChatSchema = require('./database/database');
-var ChatModel ;
+var ChatModel = require('./database/chat_schema');
 
 var app = express();
 
@@ -164,11 +164,9 @@ app.all('/*', function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next(); });
 
-
 app.get('/', function(req, res) {
     res.sendFile('Server on');
 });
-
 
 //connection event handler
 io.on('connection' , function(socket) {
@@ -186,7 +184,7 @@ io.on('connection' , function(socket) {
         console.log("type:" + typeof(data));
 
         io.emit('MESSAGE', data);
-            if(database){
+            if(database && msg != ''){
                 chat.addChat(database,'test sender', msg, function(err,result){
                     if(err){
                         throw err;
